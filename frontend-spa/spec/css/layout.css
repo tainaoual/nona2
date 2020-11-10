@@ -1,0 +1,55 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+.header {
+    height: 30%;
+    padding: 20px;
+    text-align: center;
+}
+
+.topnav {
+    height: 7%;
+    overflow: hidden;
+}
+
+.topnav a {
+    float: left;
+    display: block;
+    padding: 16px 16px;
+    text-decoration: none;
+    color: black;
+}
+
+.column {
+    height:63%;
+    float: left;
+    padding: 10px;
+}
+
+/* .column.left {
+    width: 25%;
+} */
+
+.column.main {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card {
+    margin: 10px;
+}
+
+@media screen and (max-width: 600px) {
+    .column.side, .column.middle {
+        width: 100%;
+        height: 100%;
+    }
+}
