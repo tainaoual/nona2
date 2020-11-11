@@ -6,7 +6,7 @@ public class Albums {
     private  int id ;
     private String title;
     private String image;
-    private Songs songs;
+    private String songs;
     private String recordLabel;
     private String comments;
     private String ratings;
@@ -15,7 +15,7 @@ public class Albums {
 
     }
 
-    public Albums(String title, String image, Songs songs,String recordLabel, String comments,String ratings){
+    public Albums(String title, String image, String songs,String recordLabel, String comments,String ratings){
 
 
         this.title = title;
@@ -34,7 +34,7 @@ public class Albums {
         return image;
     }
 
-    public Songs getSongs() {
+    public String getSongs() {
         return songs;
     }
 
