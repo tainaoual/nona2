@@ -3,7 +3,7 @@ package org.wcci.apimastery;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import org.wcci.apimastery.resources.Albums;
-import org.wcci.apimastery.resources.Songs;
+import org.wcci.apimastery.resources.Song;
 import org.wcci.apimastery.storage.AlbumsStorage;
 import org.wcci.apimastery.storage.SongsRepository;
 
@@ -20,14 +20,14 @@ public class Populator implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
     //this is the Albums
-        Albums eagles = new Albums("Eagles","img","some random song","some record label","this is alright","5");
+        Albums eagles = new Albums("Eagles","img","some random song","some record label","5");
         albumsStorage.saveAlbums(eagles);
-        Albums ACDC = new Albums("Back in Black", "img","Back in Black","whatever","awesome song","10");
+        Albums ACDC = new Albums("Back in Black", "img","Back in Black","whatever","10");
         albumsStorage.saveAlbums(ACDC);
     //this is the Songs
-        Songs takeItEasy = new Songs("Take it Easy","some link","some length of song","dont know what this is about","3");
+        Song takeItEasy = new Song(eagles,"Take it Easy","some link","some length of song","dont know what this is about","3");
         songsRepo.save(takeItEasy);
-        Songs backInBlack = new Songs("Back In Black","some other link","long","awesome sauce","8");
+        Song backInBlack = new Song(ACDC,"Back In Black","some other link","long","awesome sauce","8");
         songsRepo.save(backInBlack);
     }
 }

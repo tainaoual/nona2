@@ -1,30 +1,37 @@
 package org.wcci.apimastery.resources;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import java.util.List;
 import java.util.Objects;
 
+@Entity
 public class Albums {
-    private  int id ;
+
     private String title;
     private String image;
-    private String songs;
     private String recordLabel;
     private String comments;
     private String ratings;
-
+    @Id
+    @GeneratedValue
+    private  Long id;
+    @OneToMany(mappedBy = "albums")
+    private List<Song> songs;
     protected Albums(){
-
     }
 
-    public Albums(String title, String image, String songs,String recordLabel, String comments,String ratings){
-
-
+    public Albums(String title, String image,String recordLabel, String comments,String ratings){
         this.title = title;
         this.image = image;
-        this.songs = songs;
         this.recordLabel = recordLabel;
         this.comments = comments;
         this.ratings = ratings;
     }
+
+
 
     public String getTitle() {
         return title;
@@ -32,10 +39,6 @@ public class Albums {
 
     public String getImage() {
         return image;
-    }
-
-    public String getSongs() {
-        return songs;
     }
 
     public String getRecordLabel() {
@@ -50,7 +53,7 @@ public class Albums {
         return ratings;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
@@ -76,5 +79,7 @@ public class Albums {
         return Objects.hash(title, image, songs, recordLabel, comments, ratings);
     }
 
-
+    public List<Song> getSongs(){
+        return songs;
+    }
 }

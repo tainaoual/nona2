@@ -1,9 +1,7 @@
 package org.wcci.apimastery.controllers;
 
 import org.springframework.web.bind.annotation.*;
-import org.wcci.apimastery.resources.Albums;
-import org.wcci.apimastery.resources.Songs;
-import org.wcci.apimastery.storage.AlbumsStorage;
+import org.wcci.apimastery.resources.Song;
 import org.wcci.apimastery.storage.SongStorage;
 
 @RestController
@@ -16,34 +14,34 @@ public class SongsController {
     }
 
     @GetMapping("/api/songs")
-    public Iterable<Songs> retrieveAllSongs(){
+    public Iterable<Song> retrieveAllSongs(){
         return songStorage.retrieveAllSongs();
     }
     @GetMapping("/api/songs/{id}")
-    public Songs retrieveSongsById(@PathVariable Long id){
+    public Song retrieveSongsById(@PathVariable Long id){
         return songStorage.RetrieveSongsById(id);
     }
     @PostMapping("/api/songs")
-    public Iterable<Songs> addSongs(@RequestBody Songs songsToAdd){
-        songStorage.saveSongs(songsToAdd);
+    public Iterable<Song> addSongs(@RequestBody Song songToAdd){
+        songStorage.saveSongs(songToAdd);
         return songStorage.retrieveAllSongs();
     }
     @PutMapping("/api/songs")
-    public Iterable<Songs> editSongs(@RequestBody Songs songsToEdit){
-        if (songsToEdit.getId() != null){
-            songStorage.saveSongs(songsToEdit);
+    public Iterable<Song> editSongs(@RequestBody Song songToEdit){
+        if (songToEdit.getId() != null){
+            songStorage.saveSongs(songToEdit);
         }
         return songStorage.retrieveAllSongs();
     }
     @PatchMapping("/api/songs/{id}/title")
-    public Songs changeSongsTitle(@RequestBody String newTitle,@PathVariable Long id){
-        Songs songToChangeTitle = songStorage.RetrieveSongsById(id);
+    public Song changeSongsTitle(@RequestBody String newTitle, @PathVariable Long id){
+        Song songToChangeTitle = songStorage.RetrieveSongsById(id);
         songToChangeTitle.changeTitle(newTitle);
         songStorage.saveSongs(songToChangeTitle);
         return songToChangeTitle;
     }
     @DeleteMapping("/api/songs/{id}")
-    public Iterable<Songs> deleteSongsById(@PathVariable Long id){
+    public Iterable<Song> deleteSongsById(@PathVariable Long id){
         songStorage.deleteASongById(id);
         return songStorage.retrieveAllSongs();
     }

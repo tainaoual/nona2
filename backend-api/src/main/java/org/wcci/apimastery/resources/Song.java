@@ -1,24 +1,36 @@
 package org.wcci.apimastery.resources;
 
-import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
-public class Songs {
-    private Long id;
+import javax.persistence.*;
+import java.util.Objects;
+@Entity
+public class Song {
+    @ManyToOne
+    @JsonIgnore
+    private Albums albums;
     private String title;
+    @Lob
     private String link;
     private String duration;
     private String comments;
     private String ratings;
-
-    protected Songs() {
+    @Id
+    @GeneratedValue
+    private Long id;
+    protected Song() {
     }
-    public Songs(String title, String link, String duration, String comments, String ratings) {
-
+    public Song(Albums albums, String title, String link, String duration, String comments, String ratings) {
+        this.albums = albums;
         this.title = title;
         this.link = link;
         this.duration = duration;
         this.comments = comments;
         this.ratings = ratings;
+    }
+
+    public Albums getAlbums() {
+        return albums;
     }
     public Long getId() {
         return id;
@@ -41,23 +53,23 @@ public class Songs {
     public void changeTitle(String newTitle) {
         title = newTitle;
     }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Songs songs = (Songs) o;
-        return id == songs.id &&
-                Objects.equals(title, songs.title) &&
-                Objects.equals(link, songs.link) &&
-                Objects.equals(duration, songs.duration) &&
-                Objects.equals(comments, songs.comments) &&
-                Objects.equals(ratings, songs.ratings);
+        Song song = (Song) o;
+        return Objects.equals(albums, song.albums) &&
+                Objects.equals(title, song.title) &&
+                Objects.equals(link, song.link) &&
+                Objects.equals(duration, song.duration) &&
+                Objects.equals(comments, song.comments) &&
+                Objects.equals(ratings, song.ratings) &&
+                Objects.equals(id, song.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, title, link, duration, comments, ratings);
+        return Objects.hash(albums, title, link, duration, comments, ratings, id);
     }
-
-
 }

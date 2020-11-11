@@ -1,7 +1,7 @@
 package org.wcci.apimastery.storage;
 
 import org.springframework.stereotype.Service;
-import org.wcci.apimastery.resources.Songs;
+import org.wcci.apimastery.resources.Song;
 
 @Service
 public class SongStorage {
@@ -12,15 +12,15 @@ public class SongStorage {
         this.songsRepo = songsRepo;
     }
 
-    public Songs RetrieveSongsById(Long id) {
+    public Song RetrieveSongsById(Long id) {
         return songsRepo.findById(id).get();
     }
 
-    public Iterable<Songs> retrieveAllSongs() {
+    public Iterable<Song> retrieveAllSongs() {
         return songsRepo.findAll();
     }
-    public void saveSongs(Songs songsToSave) {
-        songsRepo.save(songsToSave);
+    public void saveSongs(Song songToSave) {
+        songsRepo.save(songToSave);
     }
 
     public void deleteASongById(Long id) {
