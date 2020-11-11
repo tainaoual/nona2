@@ -3,6 +3,7 @@ package org.wcci.apimastery.resources;
 import java.util.Objects;
 
 public class Albums {
+    private  int id ;
     private String title;
     private String image;
     private Songs songs;
@@ -47,6 +48,10 @@ public class Albums {
 
     public String getRatings() {
         return ratings;
+    }
+
+    public int getId() {
+        return id;
     }
 
     @Override
