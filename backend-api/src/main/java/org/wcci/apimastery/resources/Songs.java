@@ -3,7 +3,7 @@ package org.wcci.apimastery.resources;
 import java.util.Objects;
 
 public class Songs {
-    private long id;
+    private Long id;
     private String title;
     private String link;
     private String duration;
@@ -12,15 +12,15 @@ public class Songs {
 
     protected Songs() {
     }
-    public Songs(long id, String title, String link, String duration, String comments, String ratings) {
-        this.id = id;
+    public Songs(String title, String link, String duration, String comments, String ratings) {
+
         this.title = title;
         this.link = link;
         this.duration = duration;
         this.comments = comments;
         this.ratings = ratings;
     }
-    public long getId() {
+    public Long getId() {
         return id;
     }
     public String getTitle() {

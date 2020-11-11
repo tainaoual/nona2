@@ -5,7 +5,7 @@ import java.util.Objects;
 public class Albums {
     private String title;
     private String image;
-    private String songs;
+    private Songs songs;
     private String recordLabel;
     private String comments;
     private String ratings;
@@ -14,7 +14,7 @@ public class Albums {
 
     }
 
-    public Albums(String title, String image, String songs,String recordLabel, String comments,String ratings){
+    public Albums(String title, String image, Songs songs,String recordLabel, String comments,String ratings){
 
 
         this.title = title;
@@ -33,7 +33,7 @@ public class Albums {
         return image;
     }
 
-    public String getSongs() {
+    public Songs getSongs() {
         return songs;
     }
 
