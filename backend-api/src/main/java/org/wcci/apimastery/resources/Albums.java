@@ -54,6 +54,10 @@ public class Albums {
         return id;
     }
 
+    public void changeTitle(String newTitle) {
+        title = newTitle;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -71,4 +75,6 @@ public class Albums {
     public int hashCode() {
         return Objects.hash(title, image, songs, recordLabel, comments, ratings);
     }
+
+
 }

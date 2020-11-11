@@ -38,7 +38,9 @@ public class Songs {
     public String getRatings() {
         return ratings;
     }
-
+    public void changeTitle(String newTitle) {
+        title = newTitle;
+    }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -56,4 +58,6 @@ public class Songs {
     public int hashCode() {
         return Objects.hash(id, title, link, duration, comments, ratings);
     }
+
+
 }
