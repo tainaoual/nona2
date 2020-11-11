@@ -41,10 +41,38 @@ html, body {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-around;
+
+}
+
+.header.albums{
+    display: flex;
+    justify-content: center;
+    height: 10%;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
 }
 
 .card {
-    margin: 10px;
+    margin: 20px 25px 20px 25px;
+    height: 200px;
+    width: 200px;
+    
+    /* top margin is 25px
+    right margin is 50px
+    bottom margin is 75px
+    left margin is 100px */
+    
+}
+
+.all-cards{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-template-rows: repeat(3, 1fr);
+    align-items: center;
+
+
 }
 
 @media screen and (max-width: 600px) {
