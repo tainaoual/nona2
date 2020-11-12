@@ -2,6 +2,7 @@ package org.wcci.apimastery.resources;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 public class Artist {
@@ -47,5 +48,20 @@ public class Artist {
 
     public void changeArtistName(String newArtistName) {
         artistName = newArtistName;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Artist artist = (Artist) o;
+        return Objects.equals(id, artist.id) &&
+                Objects.equals(artistName, artist.artistName) &&
+                Objects.equals(image, artist.image);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, artistName, image);
     }
 }

@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+
 @Entity
 public class Song {
     @Id
@@ -59,5 +61,20 @@ public class Song {
         title = newTitle;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Song song = (Song) o;
+        return Objects.equals(id, song.id) &&
+                Objects.equals(title, song.title) &&
+                Objects.equals(duration, song.duration) &&
+                Objects.equals(link, song.link) &&
+                Objects.equals(album, song.album);
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, title, duration, link, album);
+    }
 }
