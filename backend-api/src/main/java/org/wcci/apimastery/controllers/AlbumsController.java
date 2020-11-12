@@ -1,7 +1,7 @@
 package org.wcci.apimastery.controllers;
 
 import org.springframework.web.bind.annotation.*;
-import org.wcci.apimastery.resources.Albums;
+import org.wcci.apimastery.resources.Album;
 import org.wcci.apimastery.storage.AlbumsStorage;
 
 @RestController
@@ -14,34 +14,34 @@ public class AlbumsController {
     }
 
     @GetMapping("/api/albums")
-    public Iterable<Albums> retrieveAllAlbums(){
+    public Iterable<Album> retrieveAllAlbums(){
         return albumsStorage.retrieveAllAlbums();
     }
     @GetMapping("/api/albums/{id}")
-    public Albums retrieveAlbumsById(@PathVariable Long id){
+    public Album retrieveAlbumsById(@PathVariable Long id){
         return albumsStorage.RetrieveAlbumsById(id);
     }
     @PostMapping("/api/albums")
-    public Iterable<Albums> addAlbums(@RequestBody Albums albumsToAdd){
-        albumsStorage.saveAlbums(albumsToAdd);
+    public Iterable<Album> addAlbums(@RequestBody Album albumToAdd){
+        albumsStorage.saveAlbums(albumToAdd);
         return albumsStorage.retrieveAllAlbums();
     }
     @PutMapping("/api/albums")
-    public Iterable<Albums> editAlbums(@RequestBody Albums albumsToEdit){
-        if (albumsToEdit.getId() != null){
-            albumsStorage.saveAlbums(albumsToEdit);
+    public Iterable<Album> editAlbums(@RequestBody Album albumToEdit){
+        if (albumToEdit.getId() != null){
+            albumsStorage.saveAlbums(albumToEdit);
         }
         return albumsStorage.retrieveAllAlbums();
     }
     @PatchMapping("/api/albums/{id}/title")
-    public Albums changeAlbumsTitle(@RequestBody String newTitle,@PathVariable Long id){
-        Albums albumToChangeTitle = albumsStorage.RetrieveAlbumsById(id);
+    public Album changeAlbumsTitle(@RequestBody String newTitle, @PathVariable Long id){
+        Album albumToChangeTitle = albumsStorage.RetrieveAlbumsById(id);
         albumToChangeTitle.changeTitle(newTitle);
         albumsStorage.saveAlbums(albumToChangeTitle);
         return albumToChangeTitle;
     }
     @DeleteMapping("/api/albums/{id}")
-    public Iterable<Albums> deleteAlbumsById(@PathVariable Long id){
+    public Iterable<Album> deleteAlbumsById(@PathVariable Long id){
         albumsStorage.deleteAlbumsById(id);
         return albumsStorage.retrieveAllAlbums();
     }

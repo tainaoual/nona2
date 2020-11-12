@@ -1,7 +1,7 @@
 package org.wcci.apimastery.storage;
 
 import org.springframework.stereotype.Service;
-import org.wcci.apimastery.resources.Albums;
+import org.wcci.apimastery.resources.Album;
 
 @Service
 public class AlbumsStorage {
@@ -12,16 +12,16 @@ public class AlbumsStorage {
         this.albumsRepo = albumsRepo;
     }
 
-    public Albums RetrieveAlbumsById(Long id) {
+    public Album RetrieveAlbumsById(Long id) {
         return albumsRepo.findById(id).get();
     }
 
-    public Iterable<Albums> retrieveAllAlbums() {
+    public Iterable<Album> retrieveAllAlbums() {
         return albumsRepo.findAll();
     }
 
-    public void saveAlbums(Albums albumsToSave) {
-        albumsRepo.save(albumsToSave);
+    public void saveAlbums(Album albumToSave) {
+        albumsRepo.save(albumToSave);
     }
 
     public void deleteAlbumsById(Long id) {

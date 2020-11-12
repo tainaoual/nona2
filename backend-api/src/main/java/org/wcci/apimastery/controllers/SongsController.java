@@ -19,7 +19,7 @@ public class SongsController {
     }
     @GetMapping("/api/songs/{id}")
     public Song retrieveSongsById(@PathVariable Long id){
-        return songStorage.RetrieveSongsById(id);
+        return songStorage.retrieveSongsById(id);
     }
     @PostMapping("/api/songs")
     public Iterable<Song> addSongs(@RequestBody Song songToAdd){
@@ -35,7 +35,7 @@ public class SongsController {
     }
     @PatchMapping("/api/songs/{id}/title")
     public Song changeSongsTitle(@RequestBody String newTitle, @PathVariable Long id){
-        Song songToChangeTitle = songStorage.RetrieveSongsById(id);
+        Song songToChangeTitle = songStorage.retrieveSongsById(id);
         songToChangeTitle.changeTitle(newTitle);
         songStorage.saveSongs(songToChangeTitle);
         return songToChangeTitle;

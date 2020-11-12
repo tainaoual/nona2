@@ -2,32 +2,51 @@ package org.wcci.apimastery;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
-import org.wcci.apimastery.resources.Albums;
-import org.wcci.apimastery.resources.Song;
-import org.wcci.apimastery.storage.AlbumsStorage;
-import org.wcci.apimastery.storage.SongsRepository;
+import org.wcci.apimastery.resources.*;
+import org.wcci.apimastery.storage.*;
 
 @Component
 public class Populator implements CommandLineRunner {
 
     private AlbumsStorage albumsStorage;
     private SongsRepository songsRepo;
+    private ArtistRepository artistRepo;
+    private CommentRepository commentRepos;
+    private GenreRepository genreRepo;
+    private RatingRepository ratingRepo;
 
-    public Populator(AlbumsStorage albumsStorage, SongsRepository songsRepo){
+    public Populator(AlbumsStorage albumsStorage, SongsRepository songsRepo, ArtistRepository artistRepo, CommentRepository commentRepo, GenreRepository genreRepo,RatingRepository ratingRepo){
         this.albumsStorage = albumsStorage;
         this.songsRepo = songsRepo;
+        this.artistRepo = artistRepo;
+        this.commentRepos = commentRepo;
+        this.genreRepo = genreRepo;
+        this.ratingRepo = ratingRepo;
     }
     @Override
     public void run(String... args) throws Exception {
+    //this is the artist
+        Artist artist1 = new Artist("john","img");
+        artistRepo.save(artist1);
+    //this is the comment
+        Comment comment1 = new Comment("this is a test");
+        commentRepos.save(comment1);
+
     //this is the Albums
-        Albums eagles = new Albums("Eagles","img","some random song","some record label","5");
+        Album eagles = new Album("Eagles", "img","eagles",artist1);
         albumsStorage.saveAlbums(eagles);
-        Albums ACDC = new Albums("Back in Black", "img","Back in Black","whatever","10");
+        Album ACDC = new Album("Back in Black", "img","Back in Black",artist1);
         albumsStorage.saveAlbums(ACDC);
-    //this is the Songs
-        Song takeItEasy = new Song(eagles,"Take it Easy","some link","some length of song","dont know what this is about","3");
+    //this it the rating
+         Rating rating1 = new Rating(eagles,5);
+         ratingRepo.save(rating1);
+     //this is the Genre
+        Genre genre1 = new Genre("Rock");
+        genreRepo.save(genre1);
+     // this is the Songs
+        Song takeItEasy = new Song(eagles,"eagle","https","2 min");
         songsRepo.save(takeItEasy);
-        Song backInBlack = new Song(ACDC,"Back In Black","some other link","long","awesome sauce","8");
+        Song backInBlack = new Song(ACDC,"Back In Black","https","long");
         songsRepo.save(backInBlack);
     }
 }

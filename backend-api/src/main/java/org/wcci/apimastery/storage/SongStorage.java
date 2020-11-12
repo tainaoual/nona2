@@ -12,7 +12,7 @@ public class SongStorage {
         this.songsRepo = songsRepo;
     }
 
-    public Song RetrieveSongsById(Long id) {
+    public Song retrieveSongsById(Long id) {
         return songsRepo.findById(id).get();
     }
 
