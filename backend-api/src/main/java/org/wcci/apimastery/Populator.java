@@ -1,52 +1,37 @@
 package org.wcci.apimastery;
-
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import org.wcci.apimastery.resources.*;
 import org.wcci.apimastery.storage.*;
-
 @Component
 public class Populator implements CommandLineRunner {
-
     private AlbumsStorage albumsStorage;
     private SongsRepository songsRepo;
-    private ArtistRepository artistRepo;
     private CommentRepository commentRepos;
-    private GenreRepository genreRepo;
     private RatingRepository ratingRepo;
-
-    public Populator(AlbumsStorage albumsStorage, SongsRepository songsRepo, ArtistRepository artistRepo, CommentRepository commentRepo, GenreRepository genreRepo,RatingRepository ratingRepo){
+    public Populator(AlbumsStorage albumsStorage, SongsRepository songsRepo, CommentRepository commentRepo,RatingRepository ratingRepo){
         this.albumsStorage = albumsStorage;
         this.songsRepo = songsRepo;
-        this.artistRepo = artistRepo;
         this.commentRepos = commentRepo;
-        this.genreRepo = genreRepo;
         this.ratingRepo = ratingRepo;
     }
     @Override
     public void run(String... args) throws Exception {
-    //this is the artist
-        Artist artist1 = new Artist("john","img");
-        artistRepo.save(artist1);
-    //this is the comment
-        Comment comment1 = new Comment("this is a test");
-        commentRepos.save(comment1);
-
-    //this is the Albums
-        Album eagles = new Album("Eagles", "img","eagles",artist1);
-        albumsStorage.saveAlbums(eagles);
-        Album ACDC = new Album("Back in Black", "img","Back in Black",artist1);
-        albumsStorage.saveAlbums(ACDC);
-    //this it the rating
-         Rating rating1 = new Rating(eagles,5);
-         ratingRepo.save(rating1);
-     //this is the Genre
-        Genre genre1 = new Genre("Rock");
-        genreRepo.save(genre1);
-     // this is the Songs
-        Song takeItEasy = new Song(eagles,"eagle","https","2 min");
+        Album album1 = new Album("Back in Black", "img","Back in Black","song");
+        albumsStorage.saveAlbums(album1);
+        Album album2 = new Album("dodo", "img","dodo","song");
+        albumsStorage.saveAlbums(album2);
+        Song takeItEasy = new Song("eagle","link",5,album1);
         songsRepo.save(takeItEasy);
-        Song backInBlack = new Song(ACDC,"Back In Black","https","long");
+        Song backInBlack = new Song("eagle","link",5,album2);
         songsRepo.save(backInBlack);
+        Comment comment1 = new Comment("this is a test", takeItEasy);
+        commentRepos.save(comment1);
+        Comment comment2 = new Comment("salam",backInBlack);
+        commentRepos.save(comment2);
+        Rating rating1 = new Rating(album1 ,5);
+        ratingRepo.save(rating1);
+        Rating rating2 = new Rating(album2 ,5);
+        ratingRepo.save(rating2);
     }
 }

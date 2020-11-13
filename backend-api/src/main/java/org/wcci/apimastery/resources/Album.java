@@ -1,83 +1,82 @@
 package org.wcci.apimastery.resources;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.*;
-import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
-import java.util.Objects;
-
-
 @Entity
 public class Album {
-    @Id
-    @GeneratedValue
-    private  Long id;
-    private String title;
     @Lob
+    private String title;
+    private String artist;
     private String image;
     private String recordLabel;
-
-    @OneToMany(mappedBy = "albums")
-    private List<Rating> ratings;
-    @ManyToOne
+    @Id
+    @GeneratedValue
+    private Long id;
+    @OneToMany
     @JsonIgnore
-    private Artist artist;
-    @OneToMany(mappedBy = "albums")
+    private List<Rating> ratings;
+    @OneToMany(mappedBy = "album")
+    @JsonIgnore
     private List<Song> songs;
-    protected Album(){
-    }
-
-    public Album(String title, String image, String recordLabel, Artist artist){
+    protected Album(){}
+    public Album(String title, String image, String recordLabel, String artist ) {
         this.title = title;
         this.image = image;
         this.recordLabel = recordLabel;
         this.artist = artist;
-        this.ratings = new ArrayList<Rating>();
     }
-
-    public String getTitle() {
-        return title;
-    }
-
     public String getImage() {
         return image;
     }
-
     public String getRecordLabel() {
         return recordLabel;
     }
-
     public List<Rating> getRatings() {
         return ratings;
     }
-
     public Long getId() {
         return id;
     }
-
     public void changeTitle(String newTitle) {
         title = newTitle;
     }
-
-    public List<Song> getSongs(){
+    public List<Song> getSongs() {
         return songs;
     }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Album album = (Album) o;
-        return Objects.equals(id, album.id) &&
-                Objects.equals(title, album.title) &&
-                Objects.equals(image, album.image) &&
-                Objects.equals(recordLabel, album.recordLabel) &&
-                Objects.equals(artist, album.artist);
+        if (title != null ? !title.equals(album.title) : album.title != null) return false;
+        if (artist != null ? !artist.equals(album.artist) : album.artist != null) return false;
+        if (image != null ? !image.equals(album.image) : album.image != null) return false;
+        if (recordLabel != null ? !recordLabel.equals(album.recordLabel) : album.recordLabel != null) return false;
+        return id != null ? id.equals(album.id) : album.id == null;
     }
-
     @Override
     public int hashCode() {
-        return Objects.hash(id, title, image, recordLabel, artist);
+        int result = title != null ? title.hashCode() : 0;
+        result = 31 * result + (artist != null ? artist.hashCode() : 0);
+        result = 31 * result + (image != null ? image.hashCode() : 0);
+        result = 31 * result + (recordLabel != null ? recordLabel.hashCode() : 0);
+        result = 31 * result + (id != null ? id.hashCode() : 0);
+        return result;
+    }
+    @Override
+    public String toString() {
+        return "Albums{" +
+                "title='" + title + '\'' +
+                ", artist='" + artist + '\'' +
+                ", image='" + image + '\'' +
+                ", recordLabel='" + recordLabel + '\'' +
+                ", id=" + id +
+                ", ratings=" + ratings +
+                ", songs=" + songs +
+                '}';
     }
 }

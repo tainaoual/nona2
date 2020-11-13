@@ -1,11 +1,8 @@
 package org.wcci.apimastery.resources;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
+import java.util.Collection;
 import java.util.List;
-import java.util.Objects;
 
 @Entity
 public class Comment {
@@ -13,37 +10,52 @@ public class Comment {
     @GeneratedValue
     private Long id;
     private String commentContent;
+    @ManyToOne
+    private Song song;
     @OneToMany
     private List<Comment> comments;
-
-    protected Comment() {}
-
-    public Comment(String commentContent) {
-        this.commentContent = commentContent;
+    protected Comment() {
     }
-
+    public Comment(String commentContent, Song song) {
+        this.commentContent = commentContent;
+        this.song = song;
+    }
     public String getCommentContent() {
         return commentContent;
     }
-
     public List<Comment> getComments() {
         return comments;
     }
     public Long getId() {
         return id;
     }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Comment comment = (Comment) o;
-        return Objects.equals(id, comment.id) &&
-                Objects.equals(commentContent, comment.commentContent);
+        if (!id.equals(comment.id)) return false;
+        return commentContent.equals(comment.commentContent);
     }
-
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
     @Override
     public int hashCode() {
-        return Objects.hash(id, commentContent);
+        int result = id.hashCode();
+        result = 31 * result + commentContent.hashCode();
+        return result;
+    }
+    @Override
+    public String toString() {
+        return "Comment{" +
+                "id=" + id +
+                ", commentContent='" + commentContent + '\'' +
+                ", comments=" + comments +
+                '}';
+    }
+    public Comment getComment() {
+        return new Comment();
     }
 }
