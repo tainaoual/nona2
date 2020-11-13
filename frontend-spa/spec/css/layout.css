@@ -70,7 +70,9 @@ html, body {
     display: grid;
     grid-template-columns: repeat(4,1fr);
     grid-template-rows: repeat(3, 1fr);
-    align-items: center;
+    align-content: center;
+    width: 100vw;
+    height: 100vh;
 
 
 }
