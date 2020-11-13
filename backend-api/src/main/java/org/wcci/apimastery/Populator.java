@@ -9,7 +9,7 @@ public class Populator implements CommandLineRunner {
     private SongsRepository songsRepo;
     private CommentRepository commentRepos;
     private RatingRepository ratingRepo;
-    public Populator(AlbumsStorage albumsStorage, SongsRepository songsRepo, CommentRepository commentRepo,RatingRepository ratingRepo){
+public Populator(AlbumsStorage albumsStorage, SongsRepository songsRepo, CommentRepository commentRepo,RatingRepository ratingRepo){
         this.albumsStorage = albumsStorage;
         this.songsRepo = songsRepo;
         this.commentRepos = commentRepo;

@@ -18,15 +18,13 @@ public class JpaWiringTest {
     private SongsRepository songsRepo;
     @Autowired
     private TestEntityManager entityManager;
-    private Album albums;
     private void flushAndClear(){
         entityManager.flush();
         entityManager.clear();
     }
     @Test
     public void AlbumsRepoShouldSaveAndRetrieveAlbumsObjects(){
-//       // Artist testArtist = new Artist("testy","test img");
-//       // artistRepo.save(testArtist);
+
         Album testAlbum1 = new Album("Back in Black", "img","Back in Black","lila");
         albumsRepo.save(testAlbum1);
         flushAndClear();
@@ -46,9 +44,7 @@ public class JpaWiringTest {
         flushAndClear();
         Song retrievedSong = songsRepo.findById(testSong.getId()).get();
         assertThat(retrievedSong.getComments()).contains(testComment1, testComment2);
-        // assertThat(retrievedSong.getRatings()).contains(testRating1, testRating2);
-        //  assertThat(retrievedSong.getComments()).isEqualTo(testSong);
-        //assertThat(retrievedSong.getRatings()).isEqualTo(testSong.getRatings());
+
         assertThat(retrievedSong).isEqualTo(testSong);
     }
     @Test
@@ -60,9 +56,7 @@ public class JpaWiringTest {
         flushAndClear();
         Album retrievedAlbums = albumsRepo.findById(testAlbum1.getId()).get();
         assertThat(retrievedAlbums.getSongs()).contains(testSong);
-//        Albums retrievedAlbums = albumsRepo.findById(testAlbum1.getId()).get();
-//        assertThat(retrievedAlbums.getAlbums()).contains(testAlbum1.getAlbums());
-//
+
     }
 }
 
