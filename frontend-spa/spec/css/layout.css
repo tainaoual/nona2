@@ -58,24 +58,22 @@ html, body {
 }
 
 .card {
-    margin: 20px 0 20px 0;
-    height: 200px;
-    width: 400px;
-    
-    /* top margin is 25px
-    right margin is 50px
-    bottom margin is 75px
-    left margin is 100px */
-    
+
+    border: 2px solid #e7e7e7;
+    border-radius: 4px;
+    padding: .5rem;
+    min-width: 200px;
 }
+
+
 
 .all-cards{
     display: grid;
     grid-template-columns: repeat(4,1fr);
-    grid-template-rows: repeat(3, 1fr);
-    align-content: center;
+    grid-auto-rows: auto;
+    grid-gap: 1rem;
     width: 100vw;
-    height: 100vh;
+    height: 80vh;
     margin: auto 25%;
     align-items: center;
 }
