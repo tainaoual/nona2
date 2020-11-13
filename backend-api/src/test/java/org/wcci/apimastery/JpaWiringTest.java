@@ -35,8 +35,6 @@ public class JpaWiringTest {
 
     @Test
     public void albumsRepoShouldSaveAndRetrieveAlbumObjects(){
-//        Artist testArtist = new Artist("testy","test img");
-//        artistRepo.save(testArtist);
         Album testAlbum = new Album("test title","test img","test record label",new Artist("testy","test img"));
         albumsRepo.save(testAlbum);
         flushAndClear();

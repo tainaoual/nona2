@@ -6,15 +6,15 @@ import java.util.Objects;
 
 @Entity
 public class Artist {
+    private String artistName;
     @Id
     @GeneratedValue
     private Long id;
-    private String artistName;
     @Lob
     private String image;
-    @OneToMany
+    @OneToMany(mappedBy = "artist")
     private List<Album> albums;
-    @ManyToMany
+    @ManyToMany(mappedBy = "genres")
     private List<Genre> genres;
 
     protected Artist(){

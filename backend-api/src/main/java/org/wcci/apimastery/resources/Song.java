@@ -9,19 +9,18 @@ import java.util.Objects;
 
 @Entity
 public class Song {
-    @Id
-    @GeneratedValue
-    private Long id;
-    private String title;
-    private String duration;
-    @Lob
-    private String link;
     @ManyToOne
     @JsonIgnore
     private Album album;
+    private String title;
+    @Lob
+    private String link;
+    private String duration;
     @OneToMany
     private List<Comment> comments;
-
+    @Id
+    @GeneratedValue
+    private Long id;
 
     protected Song() {
     }

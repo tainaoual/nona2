@@ -18,7 +18,7 @@ public class Album {
     private String image;
     private String recordLabel;
 
-    @OneToMany(mappedBy = "album")
+    @OneToMany(mappedBy = "albums")
     private List<Rating> ratings;
     @ManyToOne
     @JsonIgnore
