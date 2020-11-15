@@ -1,0 +1,63 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Montserrat&display=swap');
+
+:root {
+    --main-color: #a5ffd6;
+    --header-color: #ff686b;
+    --text-color: #ffffff;
+    --light-highlight:  #84dcc6;
+    --dark-highlight: #ffa69e;
+}
+
+
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+.header {
+    background-color: var(--header-color);
+    font-family: 'Lobster', cursive;
+    color: var(--text-color);
+    font-size: 3em;
+}
+
+.topnav {
+    background-color: var(--light-highlight);
+}
+
+.topnav a {
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+/* .topnav a:hover {
+    background-color: #ddd;
+    color: black;
+  } */
+
+.left {
+    background-color: blueviolet;
+}
+
+.main {
+    background-color:var(--main-color);
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    width: 40%;
+    background-color: var(--dark-highlight);
+    color: var(--text-color);
+    padding-left: 8px;
+    padding-right: 8px;
+    flex-basis: 25%;
+}
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.header.albums {
+    color: var(--text-color);
+    font-family: 'Montserrat', sans-serif;
+    background-color:var(--main-color);
+    font-size: 2em;
+}
