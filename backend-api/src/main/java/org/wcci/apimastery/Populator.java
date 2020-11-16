@@ -6,12 +6,12 @@ import org.wcci.apimastery.storage.*;
 @Component
 public class Populator implements CommandLineRunner {
     private AlbumsStorage albumsStorage;
-    private SongsRepository songsRepo;
+    private SongStorage songStorage;
     private CommentRepository commentRepos;
     private RatingRepository ratingRepo;
-public Populator(AlbumsStorage albumsStorage, SongsRepository songsRepo, CommentRepository commentRepo,RatingRepository ratingRepo){
+public Populator(AlbumsStorage albumsStorage, SongStorage songStorage, CommentRepository commentRepo,RatingRepository ratingRepo){
         this.albumsStorage = albumsStorage;
-        this.songsRepo = songsRepo;
+        this.songStorage = songStorage;
         this.commentRepos = commentRepo;
         this.ratingRepo = ratingRepo;
     }
@@ -22,9 +22,9 @@ public Populator(AlbumsStorage albumsStorage, SongsRepository songsRepo, Comment
         Album album2 = new Album("dodo", "img","dodo","song");
         albumsStorage.saveAlbums(album2);
         Song takeItEasy = new Song("eagle","link",5,album1);
-        songsRepo.save(takeItEasy);
+        songStorage.saveSongs(takeItEasy);
         Song backInBlack = new Song("eagle","link",5,album2);
-        songsRepo.save(backInBlack);
+        songStorage.saveSongs(backInBlack);
         Comment comment1 = new Comment("this is a test", takeItEasy);
         commentRepos.save(comment1);
         Comment comment2 = new Comment("salam",backInBlack);

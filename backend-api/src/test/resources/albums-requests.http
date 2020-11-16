@@ -14,19 +14,19 @@ Content-Type: application/json
 
 {"title":"awesome sause","image":"img","recordLabel":"some awesome","artist":"some"}
 
-### Update a campus resource.
-PUT http://localhost:8080/api/campuses
+### Update a album resource.
+PUT http://localhost:8080/api/albums
 Content-Type: application/json
 
-{"id":1,"location": "remote","techStack": "Java"}
+{"id":1,"title":"sause","image":"img","recordLabel":"some","artist":"person"}
 
-### Update a campus's location property.
-PATCH http://localhost:8080/api/campuses/1/location
+### Update a album's title property.
+PATCH http://localhost:8080/api/albums/1/title
 
-Clintonville
+John
 
-### Add a new book resource to the campus's books
-PATCH http://localhost:8080/api/campuses/1/books
+### Add a new song resource to the albums songs
+PATCH http://localhost:8080/api/albums/1/songs
 Content-Type: application/json
 
 {"title": "New Book","summary": "This is a sample book.","available": true,"authors": [{"name": "Sample Author"}, {"name": "Another Sample Author"}]}
