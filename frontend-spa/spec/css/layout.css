@@ -44,7 +44,6 @@ html, body {
     padding: 2rem 2rem 8rem
 }
 
-/* need to be more specific with this item */
 .header.albums{
     display: flex;
     justify-content: center;
@@ -54,18 +53,12 @@ html, body {
     padding: 0px;
 }
 
-
-
-/* index.html */
 .card {
     border: 2px solid #e7e7e7;
     border-radius: 4px;
     padding: .5rem;
     min-width: 200px;
 }
-
-
-/* index.html */
 
 .all-cards{
     display: grid;
