@@ -2,6 +2,7 @@ package org.wcci.apimastery.resources;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
 import java.util.List;
+import java.util.Objects;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 @Entity
@@ -53,37 +54,21 @@ public class Song {
     public Album getAlbum() {
         return album;
     }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Song song = (Song) o;
-        if (!id.equals(song.id)) return false;
-        if (!title.equals(song.title)) return false;
-        if (!duration.equals(song.duration)) return false;
-        return link.equals(song.link);
+        return Objects.equals(id, song.id) &&
+                Objects.equals(title, song.title) &&
+                Objects.equals(duration, song.duration) &&
+                Objects.equals(link, song.link) &&
+                Objects.equals(album, song.album);
     }
-    @Override
-    protected Object clone() throws CloneNotSupportedException {
-        return super.clone();
-    }
+
     @Override
     public int hashCode() {
-        int result = id.hashCode();
-        result = 31 * result + title.hashCode();
-        result = 31 * result + duration.hashCode();
-        result = 31 * result + link.hashCode();
-        return result;
-    }
-    @Override
-    public String toString() {
-        return "Song{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", duration='" + duration + '\'' +
-                ", link='" + link + '\'' +
-                ", ratings=" + ratings +
-                ", comments=" + comments +
-                '}';
+        return Objects.hash(id, title, duration, link, album);
     }
 }

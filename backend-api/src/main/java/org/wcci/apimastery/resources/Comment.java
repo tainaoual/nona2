@@ -3,6 +3,7 @@ package org.wcci.apimastery.resources;
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 public class Comment {
@@ -29,33 +30,22 @@ public class Comment {
     public Long getId() {
         return id;
     }
+    public Comment getComment() {
+        return new Comment();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Comment comment = (Comment) o;
-        if (!id.equals(comment.id)) return false;
-        return commentContent.equals(comment.commentContent);
+        return Objects.equals(id, comment.id) &&
+                Objects.equals(commentContent, comment.commentContent) &&
+                Objects.equals(song, comment.song);
     }
-    @Override
-    protected Object clone() throws CloneNotSupportedException {
-        return super.clone();
-    }
+
     @Override
     public int hashCode() {
-        int result = id.hashCode();
-        result = 31 * result + commentContent.hashCode();
-        return result;
-    }
-    @Override
-    public String toString() {
-        return "Comment{" +
-                "id=" + id +
-                ", commentContent='" + commentContent + '\'' +
-                ", comments=" + comments +
-                '}';
-    }
-    public Comment getComment() {
-        return new Comment();
+        return Objects.hash(id, commentContent, song);
     }
 }

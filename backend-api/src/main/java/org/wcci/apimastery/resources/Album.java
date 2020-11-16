@@ -6,6 +6,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
+
 @Entity
 public class Album {
     @Lob
@@ -47,36 +49,21 @@ public class Album {
     public List<Song> getSongs() {
         return songs;
     }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Album album = (Album) o;
-        if (title != null ? !title.equals(album.title) : album.title != null) return false;
-        if (artist != null ? !artist.equals(album.artist) : album.artist != null) return false;
-        if (image != null ? !image.equals(album.image) : album.image != null) return false;
-        if (recordLabel != null ? !recordLabel.equals(album.recordLabel) : album.recordLabel != null) return false;
-        return id != null ? id.equals(album.id) : album.id == null;
+        return Objects.equals(title, album.title) &&
+                Objects.equals(artist, album.artist) &&
+                Objects.equals(image, album.image) &&
+                Objects.equals(recordLabel, album.recordLabel) &&
+                Objects.equals(id, album.id);
     }
+
     @Override
     public int hashCode() {
-        int result = title != null ? title.hashCode() : 0;
-        result = 31 * result + (artist != null ? artist.hashCode() : 0);
-        result = 31 * result + (image != null ? image.hashCode() : 0);
-        result = 31 * result + (recordLabel != null ? recordLabel.hashCode() : 0);
-        result = 31 * result + (id != null ? id.hashCode() : 0);
-        return result;
-    }
-    @Override
-    public String toString() {
-        return "Albums{" +
-                "title='" + title + '\'' +
-                ", artist='" + artist + '\'' +
-                ", image='" + image + '\'' +
-                ", recordLabel='" + recordLabel + '\'' +
-                ", id=" + id +
-                ", ratings=" + ratings +
-                ", songs=" + songs +
-                '}';
+        return Objects.hash(title, artist, image, recordLabel, id);
     }
 }
