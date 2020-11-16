@@ -6,7 +6,7 @@ Accept: application/json
 GET localhost:8080/api/albums/1
 
 ### Delete a album with the given id.
-DELETE localhost:8080/api/albums/1
+DELETE localhost:8080/api/albums/9
 
 ### Post a new album resource.
 POST http://localhost:8080/api/albums
@@ -25,8 +25,3 @@ PATCH http://localhost:8080/api/albums/1/title
 
 John
 
-### Add a new song resource to the albums songs
-PATCH http://localhost:8080/api/albums/1/songs
-Content-Type: application/json
-
-{"title": "New Book","summary": "This is a sample book.","available": true,"authors": [{"name": "Sample Author"}, {"name": "Another Sample Author"}]}

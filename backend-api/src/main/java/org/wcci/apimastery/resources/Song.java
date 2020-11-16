@@ -18,6 +18,7 @@ public class Song {
     @JsonIgnore
     private List<Rating> ratings;
     @ManyToOne
+    @JsonIgnore
     private Album album;
     @OneToMany(mappedBy = "song")
     @JsonIgnore

@@ -22,10 +22,11 @@ public class Album {
     @JsonIgnore
     private List<Rating> ratings;
     @OneToMany(mappedBy = "album")
-    @JsonIgnore
+
     private List<Song> songs;
+
     protected Album(){}
-    public Album(String title, String image, String recordLabel, String artist ) {
+    public Album(String title, String image, String recordLabel, String artist) {
         this.title = title;
         this.image = image;
         this.recordLabel = recordLabel;
