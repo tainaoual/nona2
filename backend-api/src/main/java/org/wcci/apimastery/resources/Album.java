@@ -19,7 +19,6 @@ public class Album {
     @GeneratedValue
     private Long id;
     @OneToMany
-    @JsonIgnore
     private List<Rating> ratings;
     @OneToMany(mappedBy = "album")
 

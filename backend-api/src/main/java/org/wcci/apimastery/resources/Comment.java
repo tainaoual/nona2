@@ -1,5 +1,7 @@
 package org.wcci.apimastery.resources;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.List;
@@ -12,8 +14,10 @@ public class Comment {
     private Long id;
     private String commentContent;
     @ManyToOne
+    @JsonIgnore
     private Song song;
     @OneToMany
+    @JsonIgnore
     private List<Comment> comments;
     protected Comment() {
     }
