@@ -33,10 +33,6 @@ html, body {
     padding: 10px;
 }
 
-/* .column.left {
-    width: 25%;
-} */
-
 .column.main {
     width: 100%;
     height: 100%;
@@ -58,14 +54,11 @@ html, body {
 }
 
 .card {
-
     border: 2px solid #e7e7e7;
     border-radius: 4px;
     padding: .5rem;
     min-width: 200px;
 }
-
-
 
 .all-cards{
     display: grid;
@@ -78,9 +71,69 @@ html, body {
     align-items: center;
 }
 
+
+
 @media screen and (max-width: 600px) {
-    .column.side, .column.middle {
+    .column.middle {
         width: 100%;
         height: 100%;
     }
+}
+
+/* only applies to album.html */
+
+.main.album {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    grid-template-rows: 1fr 3fr;
+    justify-content: left;
+    padding-bottom: 2rem;
+    margin: 0 auto;
+    padding: 0; 
+}
+
+.album-card {
+    border: 2px solid #e7e7e7;
+    border-radius: 4px;
+    padding: .5rem;
+    min-width: 200px;
+    max-width: 400px;
+}
+
+.single-album {
+    width: 30vw;
+    margin: 15px 20px;
+    align-items: left;
+    padding: .5rem;
+    min-width: 200px;
+}
+.single-album-image {
+    width: 100%;
+}
+
+.song-list {
+    margin: 10px;
+    justify-content: left;
+    width: 75vw;
+}
+
+.row.song-row {
+    height: 10%;
+    margin: 15px;
+    padding: 5px;
+    display: flex;
+}
+.image {
+    width: 10%;
+    align-self: center;
+}
+
+.play-song {
+    padding: 10px;
+}
+
+.song-info {
+    padding: 10px;
+    width: 100%;
 }
