@@ -31,6 +31,13 @@ public class Album {
         this.recordLabel = recordLabel;
         this.artist = artist;
     }
+
+    public String getTitle() {
+        return title;
+    }
+    public String getArtist() {
+        return artist;
+    }
     public String getImage() {
         return image;
     }

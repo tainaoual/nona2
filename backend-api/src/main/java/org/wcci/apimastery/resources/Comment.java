@@ -21,6 +21,9 @@ public class Comment {
         this.commentContent = commentContent;
         this.song = song;
     }
+    public Song getSong() {
+        return song;
+    }
     public String getCommentContent() {
         return commentContent;
     }

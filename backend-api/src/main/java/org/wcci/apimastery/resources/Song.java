@@ -10,9 +10,9 @@ public class Song {
     @Id
     @GeneratedValue
     private Long id;
+    @Lob
     private String title;
     private Integer duration;
-    @Lob
     private String link;
     @OneToMany
     @JsonIgnore
