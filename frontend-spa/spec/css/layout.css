@@ -110,7 +110,7 @@ html, body {
 
 .single-album {
     width: 30vw;
-    margin: 20px;
+    margin: 15px 20px;
     align-items: left;
     padding: .5rem;
     min-width: 200px;
@@ -120,6 +120,7 @@ html, body {
 }
 
 .song-list {
+    margin: 10px;
     justify-content: left;
     width: 75vw;
 }
