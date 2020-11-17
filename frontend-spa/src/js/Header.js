@@ -1,11 +1,11 @@
-const createSection = function(){
-    const section = document.createElement("section")
-    header.classList.add("header") 
-    header.innerHTML = '<h1>jukeboxe soda shoppe</h1>'
+const createHeader = function(){
+    const header = document.createElement("div")
+    header.classList.add("top-header") 
+    header.innerHTML =
 
-    return section;
+    return header;
 }
 
 export {
-    createSection
+    createHeader
 }

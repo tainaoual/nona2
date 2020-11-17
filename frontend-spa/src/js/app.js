@@ -1,4 +1,4 @@
-import {createSection
+import {createHeader
 } from "./Header.js"
 
-document.querySelector('.column main').prepend(createSection());
+document.querySelector('.top-header').prepend(createHeader());
