@@ -4,7 +4,6 @@ import javax.persistence.*;
 import java.util.List;
 import java.util.Objects;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 @Entity
 public class Song {
     @Id
@@ -15,15 +14,13 @@ public class Song {
     private Integer duration;
     private String link;
     @OneToMany
-    @JsonIgnore
     private List<Rating> ratings;
     @ManyToOne
     @JsonIgnore
     private Album album;
     @OneToMany(mappedBy = "song")
-    @JsonIgnore
     private List<Comment> comments;
-    protected Song( ) {
+    protected Song() {
     }
     public Song(String title, String link, Integer duration,Album album) {
         this.album = album;

@@ -1,5 +1,7 @@
 package org.wcci.apimastery.resources;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -8,29 +10,32 @@ import java.util.Objects;
 
 @Entity
 public class Rating {
+    private int albumRating;
     @Id
     @GeneratedValue
     private Long id;
     @ManyToOne
     @JsonIgnore
     private Album album;
-    private double albumRating;
-    protected Rating(){
+
+    protected Rating() {
     }
-    public Rating(Album album, double albumRating){
+
+    public Rating(Album album, int albumRating) {
         this.album = album;
         this.albumRating = albumRating;
     }
+
     public Long getId() {
         return id;
     }
+
     public Album getAlbums() {
         return album;
     }
-    public double getAlbumRating() {
+
+    public int getAlbumRating() {
         return albumRating;
-    }
-    public Rating getRatings() {return new Rating();
     }
 
     @Override

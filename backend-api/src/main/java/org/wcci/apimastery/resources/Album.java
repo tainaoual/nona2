@@ -7,6 +7,7 @@ import javax.persistence.*;
 import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 public class Album {
@@ -19,9 +20,8 @@ public class Album {
     @GeneratedValue
     private Long id;
     @OneToMany
-    private List<Rating> ratings;
+    private Set<Rating> ratings;
     @OneToMany(mappedBy = "album")
-
     private List<Song> songs;
 
     protected Album(){}
@@ -44,7 +44,7 @@ public class Album {
     public String getRecordLabel() {
         return recordLabel;
     }
-    public List<Rating> getRatings() {
+    public Set<Rating> getRatings() {
         return ratings;
     }
     public Long getId() {

@@ -17,21 +17,32 @@ public Populator(AlbumsStorage albumsStorage, SongStorage songStorage, CommentRe
     }
     @Override
     public void run(String... args) throws Exception {
-        Album album1 = new Album("Back in Black", "img","Back in Black","song");
-        albumsStorage.saveAlbums(album1);
-        Album album2 = new Album("dodo", "img","dodo","song");
-        albumsStorage.saveAlbums(album2);
-        Song takeItEasy = new Song("eagle","link",5,album1);
+        Album backInBlack = new Album("Back in Black", "img","Back in Black","AC/DC");
+        albumsStorage.saveAlbums(backInBlack);
+        Song hellsBells = new Song("Hells bells","link",5,backInBlack);
+        songStorage.saveSongs(hellsBells);
+        Song shootToThrill = new Song("Shoot to Thrill","link",5,backInBlack);
+        songStorage.saveSongs(shootToThrill);
+        Song whatDoYouDoForMoneyHoney = new Song("What Do You Do For Money Honey","link",5,backInBlack);
+        songStorage.saveSongs(whatDoYouDoForMoneyHoney);
+        Song letMePutMyLoveIntoYou = new Song("Let Me Put My Love Into You","link",4,backInBlack);
+        songStorage.saveSongs(letMePutMyLoveIntoYou);
+        Song haveADrinkOnMe = new Song("Have a Drink On Me","link",4,backInBlack);
+        songStorage.saveSongs(haveADrinkOnMe);
+        Comment comment2 = new Comment("pretty iconic song !",hellsBells);
+        commentRepos.save(comment2);
+        Rating rating1 = new Rating(backInBlack ,10);
+        ratingRepo.save(rating1);
+//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^first album^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        Album Eagles = new Album("Greatest Hits", "img","Eagles","Eagles");
+        albumsStorage.saveAlbums(Eagles);
+        Song takeItEasy = new Song("Take it Easy","link",3,Eagles);
         songStorage.saveSongs(takeItEasy);
-        Song backInBlack = new Song("eagle","link",5,album2);
-        songStorage.saveSongs(backInBlack);
         Comment comment1 = new Comment("this is a test", takeItEasy);
         commentRepos.save(comment1);
-        Comment comment2 = new Comment("salam",backInBlack);
-        commentRepos.save(comment2);
-        Rating rating1 = new Rating(album1 ,5);
-        ratingRepo.save(rating1);
-        Rating rating2 = new Rating(album2 ,5);
+        Comment comment3 = new Comment("this is a test 3", takeItEasy);
+        commentRepos.save(comment3);
+        Rating rating2 = new Rating(Eagles ,15);
         ratingRepo.save(rating2);
     }
 }

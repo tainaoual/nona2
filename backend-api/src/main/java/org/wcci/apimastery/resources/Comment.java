@@ -16,9 +16,7 @@ public class Comment {
     @ManyToOne
     @JsonIgnore
     private Song song;
-    @OneToMany
-    @JsonIgnore
-    private List<Comment> comments;
+
     protected Comment() {
     }
     public Comment(String commentContent, Song song) {
@@ -31,15 +29,11 @@ public class Comment {
     public String getCommentContent() {
         return commentContent;
     }
-    public List<Comment> getComments() {
-        return comments;
-    }
+
     public Long getId() {
         return id;
     }
-    public Comment getComment() {
-        return new Comment();
-    }
+
 
     @Override
     public boolean equals(Object o) {
