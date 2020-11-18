@@ -34,10 +34,6 @@ body {
     color: black;
   } */
 
-.left {
-    background-color: blueviolet;
-}
-
 .main, .column{
     background-color:var(--main-color);
 }
@@ -55,10 +51,29 @@ body {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
-.header.add-new {
+.header.albums, .header.add-new {
     color: var(--text-color);
     font-family: 'Montserrat', sans-serif;
     background-color:var(--main-color);
     font-size: 2em;
+}
+
+.album-card {
+    border: 2px solid #e7e7e7;
+    border-radius: 4px;
+    padding: .5rem;
+    min-width: 200px;
+    max-width: 400px;
+    background-color: var(--dark-highlight);
+}
+
+.single-album {
+    color: var(--text-color);
+}
+
+
+.song-row {
+    border: 2px solid #e7e7e7;
+    background-color: var(--main-color);
 }
 

@@ -1,0 +1,32 @@
+### Get all albums
+GET http://localhost:8080/api/albums
+Accept: application/json
+
+### Get a album with the given id.
+GET http://localhost:8080/api/albums/1
+
+### Delete a album with the given id.
+DELETE http://localhost:8080/api/albums/1
+
+### Post a new album resource.
+POST http://localhost:8080/api/albums/
+Content-Type: application/json
+
+{"title":"awesome sause","image":"img","recordLabel":"some awesome","artist":"some","rating": 5}
+
+### Update a album resource.
+PUT http://localhost:8080/api/albums
+Content-Type: application/json
+
+{"id":1,"title":"sause","image":"img","recordLabel":"some","artist":"person", "rating": 5}
+
+### Update a album's title property.
+PATCH http://localhost:8080/api/albums/1/title
+
+John
+### Add a new song resource to the album's songs
+POST http://localhost:8080/api/songs
+Content-Type: application/json
+
+{"title": "New Song", "link": "link","duration": 5,"album": {"id": 30,"title": "Queen","image": "img","recordLabel": "Queen","artist": "Queen","rating": 8}}
+

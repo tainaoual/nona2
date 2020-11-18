@@ -6,8 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class ApiMasteryApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(ApiMasteryApplication.class, args);
-	}
-
+    public static void main(String[] args) {
+        SpringApplication.run(ApiMasteryApplication.class, args);
+    }
 }
