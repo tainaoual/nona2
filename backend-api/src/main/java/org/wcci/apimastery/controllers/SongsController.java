@@ -2,7 +2,6 @@ package org.wcci.apimastery.controllers;
 
 import org.springframework.web.bind.annotation.*;
 import org.wcci.apimastery.resources.Album;
-import org.wcci.apimastery.resources.Comment;
 import org.wcci.apimastery.resources.Song;
 import org.wcci.apimastery.storage.AlbumsStorage;
 import org.wcci.apimastery.storage.SongStorage;
@@ -32,7 +31,7 @@ public class SongsController {
     public Album addSongs(@RequestBody Song songToAdd) {
         System.out.println(songToAdd.getAlbum());
         albumsStorage.saveAlbums(songToAdd.getAlbum());
-        Song song = new Song(songToAdd.getTitle(),songToAdd.getLink(),songToAdd.getDuration(),songToAdd.getAlbum());
+        Song song = new Song(songToAdd.getTitle(), songToAdd.getLink(), songToAdd.getDuration(), songToAdd.getAlbum());
         songStorage.saveSongs(song);
         return songToAdd.getAlbum();
     }
