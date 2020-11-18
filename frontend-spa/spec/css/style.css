@@ -38,7 +38,7 @@ body {
     background-color: blueviolet;
 }
 
-.main {
+.main, .column{
     background-color:var(--main-color);
 }
 
@@ -61,3 +61,4 @@ body {
     background-color:var(--main-color);
     font-size: 2em;
 }
+
