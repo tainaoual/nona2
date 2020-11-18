@@ -37,6 +37,9 @@ body {
 .main, .column{
     background-color:var(--main-color);
 }
+.main-album {
+    background-color: var(--main-color);
+}
 
 .card {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
