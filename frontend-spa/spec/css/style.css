@@ -34,7 +34,7 @@ body {
     color: black;
   } */
 
-.main {
+.main, .column{
     background-color:var(--main-color);
 }
 
@@ -51,9 +51,7 @@ body {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
-/* need to be aware that when changing items for album.html that names need to change */
-
-.header.albums {
+.header.albums, .header.add-new {
     color: var(--text-color);
     font-family: 'Montserrat', sans-serif;
     background-color:var(--main-color);
