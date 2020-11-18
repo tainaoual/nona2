@@ -13,8 +13,6 @@ public class Song {
     private String title;
     private Integer duration;
     private String link;
-    @OneToMany
-    private List<Rating> ratings;
     @ManyToOne
     @JsonIgnore
     private Album album;
@@ -46,9 +44,7 @@ public class Song {
     public void changeTitle(String newTitle) {
         title = newTitle;
     }
-    public List<Rating> getRatings() {
-        return ratings;
-    }
+
     public Album getAlbum() {
         return album;
     }

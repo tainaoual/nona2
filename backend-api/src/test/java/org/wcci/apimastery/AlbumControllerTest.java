@@ -26,12 +26,12 @@ public class AlbumControllerTest {
     void setUp(){
         albumsStorage = mock(AlbumsStorage.class);
         underTest = new AlbumsController(albumsStorage);
-        when(albumsStorage.retrieveAllAlbums()).thenReturn(Collections.singletonList(new Album("test title","test img","test record label","testy")));
+        when(albumsStorage.retrieveAllAlbums()).thenReturn(Collections.singletonList(new Album("test title","test img","test record label","testy",5)));
     }
     @Test
     public void shouldRetrieveAllAlbums(){
         Iterable<Album> albums = underTest.retrieveAllAlbums();
-        assertThat(albums).contains(new Album("test title","test img","test record label","testy"));
+        assertThat(albums).contains(new Album("test title","test img","test record label","testy",5));
     }
     @Test
     public void retrieveAllAlbumsShouldBeMappedCorrectly() throws Exception{

@@ -13,8 +13,6 @@ public class JpaWiringTest {
     @Autowired
     private CommentRepository commentRepo;
     @Autowired
-    private RatingRepository ratingRepo;
-    @Autowired
     private SongsRepository songsRepo;
     @Autowired
     private TestEntityManager entityManager;
@@ -25,7 +23,7 @@ public class JpaWiringTest {
     @Test
     public void AlbumsRepoShouldSaveAndRetrieveAlbumsObjects(){
 
-        Album testAlbum1 = new Album("Back in Black", "img","Back in Black","lila");
+        Album testAlbum1 = new Album("Back in Black", "img","Back in Black","lila",5);
         albumsRepo.save(testAlbum1);
         flushAndClear();
         Album retrievedAlbums = albumsRepo.findById(testAlbum1.getId()).get();
@@ -33,7 +31,7 @@ public class JpaWiringTest {
     }
     @Test
     public void songsHaveManyComments() {
-        Album testAlbum1 = new Album("Back in Black", "img","Back in Black","lila");
+        Album testAlbum1 = new Album("Back in Black", "img","Back in Black","lila",5);
         albumsRepo.save(testAlbum1);
         Song testSong = new Song("eagle", "link", 5,testAlbum1);
         songsRepo.save(testSong);
@@ -49,7 +47,7 @@ public class JpaWiringTest {
     }
     @Test
     public void AlbumsShouldHaveSongs(){
-        Album testAlbum1 = new Album("Back in Black", "img","Back in Black","lila");
+        Album testAlbum1 = new Album("Back in Black", "img","Back in Black","lila",5);
         albumsRepo.save(testAlbum1);
         Song testSong = new Song("eagle","link",5,testAlbum1);
         songsRepo.save(testSong);
