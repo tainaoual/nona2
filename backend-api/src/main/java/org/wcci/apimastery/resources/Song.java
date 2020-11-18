@@ -1,6 +1,7 @@
 package org.wcci.apimastery.resources;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import javax.persistence.Id;
@@ -16,8 +17,8 @@ public class Song {
     @ManyToOne
     @JsonIgnore
     private Album album;
-    @OneToMany(mappedBy = "song", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Comment> comments;
+    @OneToMany(mappedBy = "song", orphanRemoval = true)
+    private List<Comment> comments = Collections.EMPTY_LIST;
     protected Song() {
     }
     public Song(String title, String link, Integer duration,Album album) {

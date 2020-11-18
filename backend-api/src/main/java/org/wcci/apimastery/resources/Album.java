@@ -4,10 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.*;
-import java.util.Collection;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 public class Album {
@@ -20,8 +17,8 @@ public class Album {
     @Id
     @GeneratedValue
     private Long id;
-    @OneToMany(mappedBy = "album", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Song> songs;
+    @OneToMany(mappedBy = "album", orphanRemoval = true)
+    private List<Song> songs = Collections.EMPTY_LIST;
 
     protected Album(){}
     public Album(String title, String image, String recordLabel, String artist, int rating) {
