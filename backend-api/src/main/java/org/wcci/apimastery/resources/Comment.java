@@ -19,13 +19,16 @@ public class Comment {
 
     protected Comment() {
     }
+
     public Comment(String commentContent, Song song) {
         this.commentContent = commentContent;
         this.song = song;
     }
+
     public Song getSong() {
         return song;
     }
+
     public String getCommentContent() {
         return commentContent;
     }

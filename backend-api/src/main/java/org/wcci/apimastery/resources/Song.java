@@ -1,9 +1,13 @@
 package org.wcci.apimastery.resources;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import javax.persistence.Id;
+
 @Entity
 public class Song {
     @Id
@@ -16,31 +20,39 @@ public class Song {
     @ManyToOne
     @JsonIgnore
     private Album album;
-    @OneToMany(mappedBy = "song", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Comment> comments;
+    @OneToMany(mappedBy = "song", orphanRemoval = true)
+    private List<Comment> comments = Collections.EMPTY_LIST;
+
     protected Song() {
     }
-    public Song(String title, String link, Integer duration,Album album) {
+
+    public Song(String title, String link, Integer duration, Album album) {
         this.album = album;
         this.title = title;
         this.link = link;
         this.duration = duration;
     }
+
     public Long getId() {
         return id;
     }
+
     public String getTitle() {
         return title;
     }
+
     public String getLink() {
         return link;
     }
+
     public int getDuration() {
         return duration;
     }
+
     public List<Comment> getComments() {
         return comments;
     }
+
     public void changeTitle(String newTitle) {
         title = newTitle;
     }

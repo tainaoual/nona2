@@ -33,7 +33,7 @@ public Populator(AlbumsStorage albumsStorage, SongStorage songStorage, CommentRe
         commentRepos.save(comment2);
 
 //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^first album^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-        Album Eagles = new Album("Greatest Hits", "img","Eagles","Eagles",5);
+        Album Eagles = new Album("Greatest Hits", "img","Eagles","Eagles",12);
         albumsStorage.saveAlbums(Eagles);
         Song takeItEasy = new Song("Take it Easy","link",3,Eagles);
         songStorage.saveSongs(takeItEasy);

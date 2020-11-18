@@ -1,13 +1,12 @@
 package org.wcci.apimastery.resources;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.*;
-import java.util.Collection;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 public class Album {
@@ -20,10 +19,12 @@ public class Album {
     @Id
     @GeneratedValue
     private Long id;
-    @OneToMany(mappedBy = "album", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Song> songs;
+    @OneToMany(mappedBy = "album", orphanRemoval = true)
+    private List<Song> songs = Collections.EMPTY_LIST;
 
-    protected Album(){}
+    protected Album() {
+    }
+
     public Album(String title, String image, String recordLabel, String artist, int rating) {
         this.title = title;
         this.image = image;
@@ -33,21 +34,25 @@ public class Album {
     }
 
     public int getRating() {
-        if(rating > 10){
+        if (rating > 10) {
             rating = 10;
         }
         return rating;
 
     }
+
     public String getTitle() {
         return title;
     }
+
     public String getArtist() {
         return artist;
     }
+
     public String getImage() {
         return image;
     }
+
     public String getRecordLabel() {
         return recordLabel;
     }
@@ -55,9 +60,11 @@ public class Album {
     public Long getId() {
         return id;
     }
+
     public void changeTitle(String newTitle) {
         title = newTitle;
     }
+
     public List<Song> getSongs() {
         return songs;
     }
@@ -67,7 +74,8 @@ public class Album {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Album album = (Album) o;
-        return Objects.equals(title, album.title) &&
+        return rating == album.rating &&
+                Objects.equals(title, album.title) &&
                 Objects.equals(artist, album.artist) &&
                 Objects.equals(image, album.image) &&
                 Objects.equals(recordLabel, album.recordLabel) &&
@@ -76,6 +84,6 @@ public class Album {
 
     @Override
     public int hashCode() {
-        return Objects.hash(title, artist, image, recordLabel, id);
+        return Objects.hash(title, artist, rating, image, recordLabel, id);
     }
 }

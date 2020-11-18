@@ -8,6 +8,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.wcci.apimastery.controllers.AlbumsController;
 import org.wcci.apimastery.resources.Album;
 import org.wcci.apimastery.storage.AlbumsStorage;
+import org.wcci.apimastery.storage.SongsRepository;
 
 import java.util.Collections;
 
@@ -25,7 +26,8 @@ public class AlbumControllerTest {
     @BeforeEach
     void setUp(){
         albumsStorage = mock(AlbumsStorage.class);
-        underTest = new AlbumsController(albumsStorage);
+        SongsRepository songsRepo = mock(SongsRepository.class);
+        underTest = new AlbumsController(albumsStorage,songsRepo);
         when(albumsStorage.retrieveAllAlbums()).thenReturn(Collections.singletonList(new Album("test title","test img","test record label","testy",5)));
     }
     @Test
