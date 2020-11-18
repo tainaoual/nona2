@@ -25,8 +25,8 @@ PATCH http://localhost:8080/api/albums/1/title
 
 John
 ### Add a new song resource to the album's songs
-PATCH http://localhost:8080/api/albums/1/songs
+POST http://localhost:8080/api/songs
 Content-Type: application/json
 
-{"title": "New Song", "link": "link","duration": "5"}
+{"title": "New Song", "link": "link","duration": 5,"album": {"id": 30,"title": "Queen","image": "img","recordLabel": "Queen","artist": "Queen","rating": 8}}
 
