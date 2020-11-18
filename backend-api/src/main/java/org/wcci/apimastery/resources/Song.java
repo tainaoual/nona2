@@ -13,12 +13,10 @@ public class Song {
     private String title;
     private Integer duration;
     private String link;
-    @OneToMany
-    private List<Rating> ratings;
     @ManyToOne
     @JsonIgnore
     private Album album;
-    @OneToMany(mappedBy = "song")
+    @OneToMany(mappedBy = "song", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Comment> comments;
     protected Song() {
     }
@@ -46,9 +44,7 @@ public class Song {
     public void changeTitle(String newTitle) {
         title = newTitle;
     }
-    public List<Rating> getRatings() {
-        return ratings;
-    }
+
     public Album getAlbum() {
         return album;
     }

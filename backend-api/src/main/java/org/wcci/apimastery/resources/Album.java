@@ -14,24 +14,31 @@ public class Album {
     @Lob
     private String title;
     private String artist;
+    private int rating;
     private String image;
     private String recordLabel;
     @Id
     @GeneratedValue
     private Long id;
-    @OneToMany
-    private Set<Rating> ratings;
-    @OneToMany(mappedBy = "album")
+    @OneToMany(mappedBy = "album", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Song> songs;
 
     protected Album(){}
-    public Album(String title, String image, String recordLabel, String artist) {
+    public Album(String title, String image, String recordLabel, String artist, int rating) {
         this.title = title;
         this.image = image;
         this.recordLabel = recordLabel;
         this.artist = artist;
+        this.rating = rating;
     }
 
+    public int getRating() {
+        if(rating > 10){
+            rating = 10;
+        }
+        return rating;
+
+    }
     public String getTitle() {
         return title;
     }
@@ -44,9 +51,7 @@ public class Album {
     public String getRecordLabel() {
         return recordLabel;
     }
-    public Set<Rating> getRatings() {
-        return ratings;
-    }
+
     public Long getId() {
         return id;
     }
