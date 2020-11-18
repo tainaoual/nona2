@@ -16,7 +16,7 @@ public class Song {
     @ManyToOne
     @JsonIgnore
     private Album album;
-    @OneToMany(mappedBy = "song")
+    @OneToMany(mappedBy = "song", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Comment> comments;
     protected Song() {
     }

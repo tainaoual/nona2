@@ -17,7 +17,6 @@ public class Album {
     private int rating;
     private String image;
     private String recordLabel;
-
     @Id
     @GeneratedValue
     private Long id;
@@ -34,7 +33,11 @@ public class Album {
     }
 
     public int getRating() {
+        if(rating > 10){
+            rating = 10;
+        }
         return rating;
+
     }
     public String getTitle() {
         return title;
