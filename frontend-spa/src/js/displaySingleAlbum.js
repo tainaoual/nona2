@@ -2,25 +2,26 @@ import{
     displayHomeView
 } from "./displayHomeView.js"
 
-const displaySingleAlbum = function (Album) {
+const displaySingleAlbum = function (album) {
     const mainAlbumElement = document.querySelector(".column-main")
     clearChildren(mainAlbumElement);
-    const singleAlbumElement = document.createElement("div");
-    singleAlbumElement.classList.add("single-album");
+    const singleAlbumElement = document.createElement("section");
+    singleAlbumElement.classList.add("main-album");
     mainAlbumElement.appendChild(singleAlbumElement);
 
-    const albumCard = document.createElement('div');
+    const albumCard = document.createElement("div");
+    albumCard.classList.add('album-card');
     
     const albumNameElement = document.createElement("h4")
-    albumNameElement.innerText = Album.title;
+    albumNameElement.innerText = album.title;
     albumNameElement.classList.add("albumTitle");
     
     const albumArtistElement = document.createElement("p");
-    albumArtistElement.innerText = Album.artist;
+    albumArtistElement.innerText = album.artist;
     albumArtistElement.classList.add("albumArtist")
     
     const albumRatingElement = document.createElement("p")
-    albumRatingElement.innerText = Album.rating;
+    albumRatingElement.innerText = album.rating;
     albumRatingElement.classList.add("albumRating")
    
     albumCard.appendChild(albumNameElement);
@@ -29,10 +30,10 @@ const displaySingleAlbum = function (Album) {
     singleAlbumElement.appendChild(albumCard);
 
     const songsRowElement = document.createElement("div");
-    songsRowElement.classList.add("row","song-row");
+    songsRowElement.classList.add("song-list");
     singleAlbumElement.appendChild(songsRowElement);
 
-    Album.songs.forEach(song => {
+    album.songs.forEach(song => {
         const songTitle = document.createElement("h4")
         songTitle.classList.add("songName");
         songTitle.innerText = song.title;
