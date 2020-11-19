@@ -1,4 +1,4 @@
-const allALbums = [
+const allAlbums = [
   {
     "title": "Back in Black",
     "artist": "AC/DC",
@@ -76,4 +76,6 @@ const allALbums = [
     ]
   }
 ]
-  export {allALbums}
+export {
+  allAlbums
+}

@@ -1,8 +1,8 @@
 const displayHomeView = function(Albums){
-    const mainElement = document.createElement("section");
-    mainElement.classList.add("column-main")
+    const mainElement = document.createElement("main");
+    mainElement.classList.add("main")
     const sectionElement = document.createElement("div")
-    sectionElement.classList.add("all-cards")
+    sectionElement.classList.add("card")
     mainElement.appendChild(sectionElement);
 
     let albumListHTML = "";
@@ -22,4 +22,6 @@ const displayHomeView = function(Albums){
 
     return mainElement;
 }
-    export{displayHomeView}
+export{
+    displayHomeView
+}
