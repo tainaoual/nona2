@@ -3,7 +3,7 @@ import{
 } from "./displayHomeView.js"
 
 const displaySingleAlbum = function (Album) {
-    const mainAlbumElement = document.querySelector(".main-album")
+    const mainAlbumElement = document.querySelector(".column-main")
     clearChildren(mainAlbumElement);
     const singleAlbumElement = document.createElement("div");
     singleAlbumElement.classList.add("single-album");
@@ -29,10 +29,10 @@ const displaySingleAlbum = function (Album) {
     singleAlbumElement.appendChild(albumCard);
 
     const songsRowElement = document.createElement("div");
-    songsRowElement.classList.add("row song-row");
+    songsRowElement.classList.add("row","song-row");
     singleAlbumElement.appendChild(songsRowElement);
 
-    Album.song.forEach(song => {
+    Album.songs.forEach(song => {
         const songTitle = document.createElement("h4")
         songTitle.classList.add("songName");
         songTitle.innerText = song.title;

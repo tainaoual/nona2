@@ -11,33 +11,37 @@ const displayHomeView = function(Album){
     const columnMainElement = document.createElement("section");
     columnMainElement.classList.add("column-main")
     
+    // const headerAlbums = document.createElement('div')
+    // headerAlbums.classList.add("header albums")
+    columnMainElement.innerHTML = `
+    <div class="header albums">
+            <h1>Albums</h1>
+    </div>`
     const allCardElement = document.createElement("div");
     allCardElement.classList.add("all-cards")
-    
-    const sectionElement = document.createElement("div")
-    sectionElement.classList.add("card")
 
     mainElement.appendChild(columnMainElement);
+    // mainElement.appendChild(headerAlbums);
     columnMainElement.appendChild(allCardElement);
-    allCardElement.appendChild(sectionElement);
+   
    
 
-    Album.forEach(Album => {
+    Album.forEach(album => {
         let albumElement = document.createElement('div');
         albumElement.classList.add("card");
         let albumTitleElement = document.createElement('h4');
         albumTitleElement.classList.add("albumTitle");
-        albumTitleElement.innerText = Album.title;
+        albumTitleElement.innerText = album.title;
         albumTitleElement.addEventListener("click",()=> displaySingleAlbum(album));
         let albumArtistElement = document.createElement("p");
         albumArtistElement.classList.add("albumArtist");
         let albumImage =document.createElement('img')
         albumImage.classList.add('album-image')
-        albumArtistElement.innerText = Album.artist;
+        albumArtistElement.innerText = album.artist;
         albumElement.appendChild(albumTitleElement);
         albumElement.appendChild(albumArtistElement);
-        sectionElement.appendChild(albumElement);
-        sectionElement.appendChild(albumImage);
+        allCardElement.appendChild(albumElement);
+        allCardElement.appendChild(albumImage);
 
     });
     
