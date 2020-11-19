@@ -1,9 +1,15 @@
 const displayHomeView = function(Albums){
     const mainElement = document.createElement("main");
     mainElement.classList.add("main")
+    const columnMainElement =document.createElement("section");
+    columnMainElement.classList.add("column-main")
+    const allCardElement = document.createElement("div");
+    allCardElement.classList.add("all-cards")
     const sectionElement = document.createElement("div")
     sectionElement.classList.add("card")
-    mainElement.appendChild(sectionElement);
+    mainElement.appendChild(columnMainElement);
+    columnMainElement.appendChild(allCardElement);
+    allCardElement.appendChild(sectionElement);
 
     let albumListHTML = "";
 
