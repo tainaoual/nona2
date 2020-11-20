@@ -39,6 +39,22 @@ const displaySingleAlbum = function (album) {
         songTitle.innerText = song.title;
         songsRowElement.appendChild(songTitle);
     });
+    const backToAllAlbums = document.createElement("a");
+backToAllAlbums.classList.add("back-navigation");
+backToAllAlbums.innerText = "Back to Album List"
+
+backToAllAlbums.addEventListener('click', () => {
+    clearChildren(mainAlbumElement);
+    fetch("http://localhost:8080/api/albums")
+    .then(response => response.json())
+    .then(album => displayHomeView(album))
+    .then(albumElement => mainAlbumElement.appendChild(albumElement))
+    .catch(error => console.log(error));
+});
+
+singleAlbumElement.appendChild(backToAllAlbums);
+
+
 }
 
 const clearChildren = function (element) {
@@ -46,6 +62,8 @@ const clearChildren = function (element) {
         element.removeChild(element.lastChild);
     }
 }
+
+
     
 
 export{
